@@ -17,7 +17,7 @@ export class ParkingService {
 
   }
 
-  load(){
+  all(){
     return this.http.get(this.baseUrl+"/parkings")
       .map(res => res.json());
   }

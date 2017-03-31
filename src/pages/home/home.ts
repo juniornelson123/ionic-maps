@@ -16,7 +16,7 @@ export class HomePage {
   parking: Parking[];
  
   constructor(public navCtrl: NavController, public geolocation: Geolocation, public parkingService: ParkingService) {
-   parkingService.load().subscribe(parking => {
+   parkingService.all().subscribe(parking => {
       console.log(parking)
     })
   }
