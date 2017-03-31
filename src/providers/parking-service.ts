@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Parking } from '../models/parking';
 
 import 'rxjs/add/operator/map';
 
@@ -12,10 +11,14 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class ParkingService {
-	private parkings: Array<Parking>;
+	baseUrl = 'http://localhost:3000';
   
   constructor(public http: Http) {
-    console.log('Hello ParkingService Provider');
+
   }
 
+  load(){
+    return this.http.get(this.baseUrl+"/parkings")
+      .map(res => res.json());
+  }
 }

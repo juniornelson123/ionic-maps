@@ -1,4 +1,4 @@
-export interface Parking {
+export class Parking {
   title: string;
   description: string;
   latitude: number;

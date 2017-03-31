@@ -1,7 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 import { NavController } from 'ionic-angular';
- 
+import { ParkingService } from '../../providers/parking-service' 
+import { Parking } from '../../models/parking'
 declare var google;
  
 @Component({
@@ -12,9 +13,12 @@ export class HomePage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
+  parking: Parking[];
  
-  constructor(public navCtrl: NavController, public geolocation: Geolocation) {
- 
+  constructor(public navCtrl: NavController, public geolocation: Geolocation, public parkingService: ParkingService) {
+   parkingService.load().subscribe(parking => {
+      console.log(parking)
+    })
   }
  
   loadMap(){
