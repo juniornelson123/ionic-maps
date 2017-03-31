@@ -36,7 +36,11 @@ export class HomePage {
     };
     
       this.geolocation.getCurrentPosition(options).then((position: Geoposition) => {
-      console.log(position)
+      console.log('lat: ' + position.coords.latitude + ', lon: ' + position.coords.longitude)
+      let latLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude)
+      
+      console.log(this.map.setCenter(latLng))
+      //this.map.center()
     }).catch((err) => {
       alert(err);
     })
