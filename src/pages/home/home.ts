@@ -18,16 +18,28 @@ export class HomePage {
   }
  
   loadMap(){
- 	  let latLng = new google.maps.LatLng(-34.9290, 138.6010);
- 
-    let mapOptions = {
-      center: latLng,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
- 
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
- 
+ 	  let options = {
+      enableHighAccuracy: true
+    };
+    
+    this.geolocation.getCurrentPosition(options).then((position: Geoposition) => {
+      let latLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude)
+      
+
+      let mapOptions = {
+        center: latLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+   
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+      console.log(this.map.setCenter(latLng))
+      //this.map.center()
+    }).catch((err) => {
+      alert(err);
+    })
+    
   }
 
   geolocate() {

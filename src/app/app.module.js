@@ -10,6 +10,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ParkingService } from '../providers/parking-service';
+
 var AppModule = (function () {
     function AppModule() {
     }
@@ -32,6 +34,7 @@ AppModule = __decorate([
         providers: [
             StatusBar,
             SplashScreen,
+            ParkingService,
             { provide: ErrorHandler, useClass: IonicErrorHandler }
         ]
     })
